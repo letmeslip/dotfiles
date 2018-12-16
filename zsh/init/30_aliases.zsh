@@ -21,8 +21,9 @@ alias egrep='egrep --color=auto'
 
 alias df='df -h'
 
-alias zmv='noglob zmv -W'
+alias tmux='tmux -2'
 
+alias zmv='noglob zmv -W'
 
 if [[ -e ${HOME}/.local_aliases ]]; then
     source ${HOME}/.local_aliases
