@@ -127,3 +127,35 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
+
+function dotupdate() {
+    local DOTFILES_DIR="$HOME/dotfiles"
+    local GREEN='\033[0;32m'
+    local CYAN='\033[0;36m'
+    local YELLOW='\033[0;33m'
+    local BOLD='\033[1m'
+    local RESET='\033[0m'
+    local SEP="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+    step() { printf "  ${CYAN}%-28s${RESET}" "$1..." }
+    ok()   { printf "${GREEN}✓${RESET}\n" }
+    fail() { printf "${YELLOW}✗ $1${RESET}\n" }
+
+    echo ""
+    echo "${BOLD} dotupdate${RESET}"
+    echo "$SEP"
+
+    step "pulling latest"
+    git -C "$DOTFILES_DIR" pull -q 2>/dev/null && ok || fail "git pull failed"
+
+    step "reloading tmux"
+    tmux source-file ~/.tmux.conf 2>/dev/null && ok || fail "tmux not running"
+
+    step "reloading zsh"
+    source ~/.zshrc && ok || fail "failed"
+
+    echo ""
+    echo "$SEP"
+    echo "${GREEN}${BOLD} All up to date!${RESET}"
+    echo ""
+}
