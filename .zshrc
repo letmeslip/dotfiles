@@ -117,3 +117,8 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
+
+# ターミナル起動時に自動でtmuxに入る
+if [ -z "$TMUX" ]; then
+    tmux attach -t main 2>/dev/null || tmux new -s main
+fi
