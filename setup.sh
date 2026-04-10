@@ -2,9 +2,11 @@
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-# dotfilesをclone（まだなければ）
+# dotfilesをclone or pull
 if [ ! -d "$DOTFILES_DIR" ]; then
     git clone https://github.com/letmeslip/dotfiles.git "$DOTFILES_DIR"
+else
+    git -C "$DOTFILES_DIR" pull
 fi
 
 # OS判定
