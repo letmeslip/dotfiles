@@ -67,5 +67,8 @@ link .tmux.conf
 link .zshrc
 link .p10k.zsh
 
+# dotfiles/binに実行権限を付与
+chmod +x "$DOTFILES_DIR/bin/"*
+
 echo ""
 echo "完了！ source ~/.zshrc で設定を反映してください"
