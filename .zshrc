@@ -131,6 +131,9 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
 
+# Proxmox VE環境のみ /usr/sbin を追加（qm, pct等のコマンド認識用）
+[[ -f /usr/sbin/qm ]] && export PATH="$PATH:/usr/sbin"
+
 function dotupdate() {
     local DOTFILES_DIR="$HOME/dotfiles"
     local GREEN='\033[0;32m'
