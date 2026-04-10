@@ -65,7 +65,11 @@ fi
 # シンボリックリンクを張る
 link .tmux.conf
 link .zshrc
-link .p10k.zsh
+
+# p10kはMacのみ
+if [[ "$OS" == "mac" ]]; then
+    link .p10k.zsh
+fi
 
 # dotfiles/binに実行権限を付与
 chmod +x "$DOTFILES_DIR/bin/"*
