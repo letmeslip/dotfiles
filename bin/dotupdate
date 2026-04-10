@@ -47,11 +47,12 @@ fi
 step "reloading zsh"
 if [ -f ~/.zshrc ]; then
     ok
-    echo ""
-    echo "$SEP"
-    echo -e "${GREEN}${BOLD} All up to date!${RESET}"
-    echo ""
-    exec zsh
 else
     fail "~/.zshrc not found"
 fi
+
+echo ""
+echo "$SEP"
+echo -e "${GREEN}${BOLD} All up to date!${RESET}"
+echo -e "  ${CYAN}run: source ~/.zshrc${RESET} to reload shell"
+echo ""
