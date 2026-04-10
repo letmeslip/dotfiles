@@ -1,6 +1,6 @@
-# ターミナル起動時に自動でtmuxに入る
-if [ -z "$TMUX" ]; then
-    tmux attach -t main 2>/dev/null || tmux new -s main
+# ターミナル起動時に自動でtmuxに入る（iTerm限定）
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    exec tmux new-session -A -s main
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
